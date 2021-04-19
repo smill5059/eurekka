@@ -20,7 +20,7 @@
 
   ![식약처, '식품안전나라' 공공데이터 129종에서 164종 개방 확대 - 한우리경제](https://www.hanuribiz.com/news/photo/202002/43578_35630_3847.png)
   
-  [식품의약품안전처 데이터활용서비스]: https://www.foodsafetykorea.go.kr/apiMain.do
+  [식품의약품안전처 데이터활용서비스](https://www.foodsafetykorea.go.kr/apiMain.do)
   
    `준웅` : 데이터 수집 및 가공
 
