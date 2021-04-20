@@ -1,28 +1,7 @@
-# 0419 회의록
+### Figma Link
 
-- #### 프로젝트를 위한 공부
+![기획자, 디자이너, 퍼블리셔의 경계를 허무는 물건, 피그마(Figma) | by Isaac Chaneel Lee | Medium](https://miro.medium.com/max/5236/1*U0Ni6_OYujeBvzZfOWKLbw.png)
 
-![React에 대하여](https://blog.kakaocdn.net/dn/bHaDEJ/btqzvJKBRWs/bjGrc9m3naOzIOv6oE0Yz0/img.png)
+- Figma를 이용한 프로토타입
 
-​		**현아** : React native 강의 수강 및 실습
-
-​		**서연** : React 강의 수강 및 실습
-
-​		**수림** : react native 강의 수강 및 학습
-
-​		**연욱** : React 강의 수강 후 실습 코드 작성
-
-
-
-- #### *조리식품의 레시피 DB & 바코드연계제품*   데이터
-
-  
-
-  ![식약처, '식품안전나라' 공공데이터 129종에서 164종 개방 확대 - 한우리경제](https://www.hanuribiz.com/news/photo/202002/43578_35630_3847.png)
-  
-  **링크** : [식품의약품안전처 데이터활용서비스](https://www.foodsafetykorea.go.kr/apiMain.do)
-  
-   
-  
-  **준웅** : 데이터 수집 및 가공
-
+https://www.figma.com/file/iKfiBAHhK78Nv5xACxwXyb/%EC%9C%A0%EB%A0%88%EA%B9%8C?node-id=0%3A1
