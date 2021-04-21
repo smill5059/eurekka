@@ -5,3 +5,9 @@
 - Figma를 이용한 프로토타입
 
 https://www.figma.com/file/iKfiBAHhK78Nv5xACxwXyb/%EC%9C%A0%EB%A0%88%EA%B9%8C?node-id=0%3A1
+
+
+
+## 유레까 간트차트
+
+https://www.notion.so/0618d866893e4684849523d262cfb3d7
