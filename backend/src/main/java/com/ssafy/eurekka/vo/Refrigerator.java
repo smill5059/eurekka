@@ -18,19 +18,19 @@ public class Refrigerator {
   @Id
   private ObjectId id;
 
-  List<Product> noodles;
-  List<Product> snack;
-  List<Product> beverage;
-  List<Product> pickles;
-  List<Product> diary;
-  List<Product> health;
-  List<Product> powder;
-  List<Product> meat;
-  List<Product> seasoning;
-  List<Product> ocean;
-  List<Product> fresh;
-  List<Product> alcohol;
-  List<Product> frozen;
-  List<Product> ices;
-  List<Product> others;
+  List<ObjectId> noodles;
+  List<ObjectId> snack;
+  List<ObjectId> beverage;
+  List<ObjectId> pickles;
+  List<ObjectId> diary;
+  List<ObjectId> health;
+  List<ObjectId> powder;
+  List<ObjectId> meat;
+  List<ObjectId> seasoning;
+  List<ObjectId> ocean;
+  List<ObjectId> fresh;
+  List<ObjectId> alcohol;
+  List<ObjectId> frozen;
+  List<ObjectId> ices;
+  List<ObjectId> others;
 }
