@@ -30,20 +30,23 @@ import io.swagger.annotations.ApiOperation;
 public class UserController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
-	
-//	@Autowired
-//	private UserRepository UserRepository;
 
-	@ApiOperation(value = "네이버 로그인을 위한 state 요청", notes = "state 리턴", response = String.class)
-	@GetMapping("/naver/state")
+	private String naverClientId = "AxHLlIRdNj8xtwynt8hJ";
+	private String redirectUri = "http://localhost:19000/";
+
+	@ApiOperation(value = "네이버 로그인을 위한 url요청", notes = "url 리턴", response = String.class)
+	@GetMapping("/naver/url")
 	public ResponseEntity<String> getNaverLoginState() {
-		System.out.println("state요청");
+		System.out.println("url요청");
 		ResponseEntity<String> result = null;
+
 		try {
 			SecureRandom random = new SecureRandom();
 			String state = new BigInteger(130, random).toString(32);
-			result = new ResponseEntity<String>(state, HttpStatus.OK);
-			System.out.println(state);
+			String url = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id="+naverClientId+
+					"&redirect_uri="+redirectUri+"&state="+state;
+			System.out.println(url);
+			result = new ResponseEntity<String>(url, HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
 			result = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -83,8 +86,8 @@ public class UserController {
 //		// 접근토큰을(OAuthToken.access_token)사용하여 사용자 프로필정보 접근
 //		restTemplate = new RestTemplate();
 //		headers = new HttpHeaders();
-//		headers.add("Authorization", "Bearer " + oauthToken.);
-//		Optional<User> found = UserRepository.find
+//		headers.add("Authorization", "Bearer " + oauthToken.getAccess_token());
+//		
 //		
 //
 //
