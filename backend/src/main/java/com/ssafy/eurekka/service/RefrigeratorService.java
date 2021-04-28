@@ -7,7 +7,7 @@ import org.bson.types.ObjectId;
 
 public interface RefrigeratorService {
 
-  Refrigerator createProduct(ObjectId id, String category, Product product);
+  Refrigerator createProduct(ObjectId id, int category, Product product);
   List[] findAllProduct(ObjectId id);
   List<Product> findByCategory(ObjectId id, int category);
 }

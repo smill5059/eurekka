@@ -4,7 +4,6 @@ import com.ssafy.eurekka.repository.ProductRepository;
 import com.ssafy.eurekka.repository.RefrigeratorRepository;
 import com.ssafy.eurekka.vo.Product;
 import com.ssafy.eurekka.vo.Refrigerator;
-import java.sql.Ref;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -21,7 +20,7 @@ public class RefrigeratorServiceImpl implements RefrigeratorService{
   private ProductRepository productRepository;
 
   @Override
-  public Refrigerator createProduct(ObjectId id, String category, Product product) {
+  public Refrigerator createProduct(ObjectId id, int category, Product product) {
     //product db에 저장
     Product p = productRepository.save(product);
 
@@ -30,113 +29,128 @@ public class RefrigeratorServiceImpl implements RefrigeratorService{
     if (found.isPresent()) {
       List<Product> productList = null;
       Refrigerator refrigerator = found.get();
-      if (category.equals("noodles")) {
-        productList = refrigerator.getNoodles();
-        if (productList == null) {
-          productList = new ArrayList<>();
-        }
-        productList.add(p);
-        refrigerator.setNoodles(productList);
-      } else if (category.equals("snack")) {
-        productList = refrigerator.getSnack();
-        if (productList == null) {
-          productList = new ArrayList<>();
-        }
-        productList.add(p);
-        refrigerator.setSnack(productList);
-      } else if (category.equals("beverage")) {
-        productList = refrigerator.getBeverage();
-        if (productList == null) {
-          productList = new ArrayList<>();
-        }
-        productList.add(p);
-        refrigerator.setBeverage(productList);
-      } else if (category.equals("pickles")) {
-        productList = refrigerator.getPickles();
-        if (productList == null) {
-          productList = new ArrayList<>();
-        }
-        productList.add(p);
-        refrigerator.setPickles(productList);
-      } else if (category.equals("diary")) {
-        productList = refrigerator.getDiary();
-        if (productList == null) {
-          productList = new ArrayList<>();
-        }
-        productList.add(p);
-        refrigerator.setDiary(productList);
-      } else if (category.equals("health")) {
-        productList = refrigerator.getHealth();
-        if (productList == null) {
-          productList = new ArrayList<>();
-        }
-        productList.add(p);
-        refrigerator.setHealth(productList);
-      } else if (category.equals("powder")) {
-        productList = refrigerator.getPowder();
-        if (productList == null) {
-          productList = new ArrayList<>();
-        }
-        productList.add(p);
-        refrigerator.setPowder(productList);
-      } else if (category.equals("meat")) {
-        productList = refrigerator.getMeat();
-        if (productList == null) {
-          productList = new ArrayList<>();
-        }
-        productList.add(p);
-        refrigerator.setMeat(productList);
-      } else if (category.equals("seasoning")) {
-        productList = refrigerator.getSeasoning();
-        if (productList == null) {
-          productList = new ArrayList<>();
-        }
-        productList.add(p);
-        refrigerator.setSeasoning(productList);
-      } else if (category.equals("ocean")) {
-        productList = refrigerator.getOcean();
-        if (productList == null) {
-          productList = new ArrayList<>();
-        }
-        productList.add(p);
-        refrigerator.setOcean(productList);
-      } else if (category.equals("fresh")) {
-        productList = refrigerator.getFresh();
-        if (productList == null) {
-          productList = new ArrayList<>();
-        }
-        productList.add(p);
-        refrigerator.setFresh(productList);
-      } else if (category.equals("alcohol")) {
-        productList = refrigerator.getAlcohol();
-        if (productList == null) {
-          productList = new ArrayList<>();
-        }
-        productList.add(p);
-        refrigerator.setAlcohol(productList);
-      } else if (category.equals("frozen")) {
-        productList = refrigerator.getFrozen();
-        if (productList == null) {
-          productList = new ArrayList<>();
-        }
-        productList.add(p);
-        refrigerator.setFrozen(productList);
-      } else if (category.equals("ices")) {
-        productList = refrigerator.getIces();
-        if (productList == null) {
-          productList = new ArrayList<>();
-        }
-        productList.add(p);
-        refrigerator.setIces(productList);
-      } else if (category.equals("others")) {
-        productList = refrigerator.getOthers();
-        if (productList == null) {
-          productList = new ArrayList<>();
-        }
-        productList.add(p);
-        refrigerator.setOthers(productList);
+      switch (category) {
+        case 0:
+          productList = refrigerator.getNoodles();
+          if (productList == null) {
+            productList = new ArrayList<>();
+          }
+          productList.add(p);
+          refrigerator.setNoodles(productList);
+          break;
+        case 1:
+          productList = refrigerator.getSnack();
+          if (productList == null) {
+            productList = new ArrayList<>();
+          }
+          productList.add(p);
+          refrigerator.setSnack(productList);
+          break;
+        case 2:
+          productList = refrigerator.getBeverage();
+          if (productList == null) {
+            productList = new ArrayList<>();
+          }
+          productList.add(p);
+          refrigerator.setBeverage(productList);
+          break;
+        case 3:
+          productList = refrigerator.getPickles();
+          if (productList == null) {
+            productList = new ArrayList<>();
+          }
+          productList.add(p);
+          refrigerator.setPickles(productList);
+          break;
+        case 4:
+          productList = refrigerator.getDiary();
+          if (productList == null) {
+            productList = new ArrayList<>();
+          }
+          productList.add(p);
+          refrigerator.setDiary(productList);
+          break;
+        case 5:
+          productList = refrigerator.getHealth();
+          if (productList == null) {
+            productList = new ArrayList<>();
+          }
+          productList.add(p);
+          refrigerator.setHealth(productList);
+          break;
+        case 6:
+          productList = refrigerator.getPowder();
+          if (productList == null) {
+            productList = new ArrayList<>();
+          }
+          productList.add(p);
+          refrigerator.setPowder(productList);
+          break;
+        case 7:
+          productList = refrigerator.getMeat();
+          if (productList == null) {
+            productList = new ArrayList<>();
+          }
+          productList.add(p);
+          refrigerator.setMeat(productList);
+          break;
+        case 8:
+          productList = refrigerator.getSeasoning();
+          if (productList == null) {
+            productList = new ArrayList<>();
+          }
+          productList.add(p);
+          refrigerator.setSeasoning(productList);
+          break;
+        case 9:
+          productList = refrigerator.getOcean();
+          if (productList == null) {
+            productList = new ArrayList<>();
+          }
+          productList.add(p);
+          refrigerator.setOcean(productList);
+          break;
+        case 10:
+          productList = refrigerator.getFresh();
+          if (productList == null) {
+            productList = new ArrayList<>();
+          }
+          productList.add(p);
+          refrigerator.setFresh(productList);
+          break;
+        case 11:
+          productList = refrigerator.getAlcohol();
+          if (productList == null) {
+            productList = new ArrayList<>();
+          }
+          productList.add(p);
+          refrigerator.setAlcohol(productList);
+          break;
+        case 12:
+          productList = refrigerator.getFrozen();
+          if (productList == null) {
+            productList = new ArrayList<>();
+          }
+          productList.add(p);
+          refrigerator.setFrozen(productList);
+          break;
+        case 13:
+          productList = refrigerator.getIces();
+          if (productList == null) {
+            productList = new ArrayList<>();
+          }
+          productList.add(p);
+          refrigerator.setIces(productList);
+          break;
+        case 14:
+          productList = refrigerator.getOthers();
+          if (productList == null) {
+            productList = new ArrayList<>();
+          }
+          productList.add(p);
+          refrigerator.setOthers(productList);
+          break;
       }
-
       return refrigeratorRepository.save(refrigerator);
     }
 

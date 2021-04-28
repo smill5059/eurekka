@@ -24,10 +24,10 @@ public class RefrigeratorController {
   @Autowired
   private RefrigeratorService refrigeratorService;
 
-  @ApiOperation(value = "제품등록", notes = "냉장고 id와 제품 정보를 인자로 받아 제품 등록")
-  @PutMapping("/register")
+  @ApiOperation(value = "제품등록", notes = "냉장고 id와 제품 정보를 받아 제품 등록")
+  @PutMapping("/{id}")
   public ResponseEntity<?> createProduct(
-      @RequestParam("id") ObjectId id, @RequestParam("category") String category, @RequestBody Product product) {
+      @PathVariable ObjectId id, @RequestParam("category") int category, @RequestBody Product product) {
     Refrigerator result = refrigeratorService.createProduct(id, category, product);
     if (result == null) {
       return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
