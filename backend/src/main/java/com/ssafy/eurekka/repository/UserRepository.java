@@ -1,4 +1,4 @@
-package com.ssafy.repository;
+package com.ssafy.eurekka.repository;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
