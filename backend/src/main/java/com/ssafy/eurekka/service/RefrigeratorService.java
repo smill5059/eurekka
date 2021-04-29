@@ -11,4 +11,5 @@ public interface RefrigeratorService {
   List[] findAllProduct(ObjectId id);
   List<Product> findByCategory(ObjectId id, int category);
   void updateAbandon(ObjectId userId, ObjectId refrigerId, int category, Product product);
+  void updateEat(ObjectId userId, ObjectId refrigerId, int category, Product product);
 }

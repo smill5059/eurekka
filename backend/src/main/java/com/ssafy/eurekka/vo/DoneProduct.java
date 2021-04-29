@@ -14,5 +14,5 @@ public class DoneProduct {
 
   @Temporal(TemporalType.TIMESTAMP)
   private Date recordDate;
-  private String category;
+  private int category;
 }

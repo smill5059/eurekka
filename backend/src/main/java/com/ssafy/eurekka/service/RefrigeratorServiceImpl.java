@@ -2,11 +2,16 @@ package com.ssafy.eurekka.service;
 
 import com.ssafy.eurekka.repository.ProductRepository;
 import com.ssafy.eurekka.repository.RefrigeratorRepository;
+import com.ssafy.eurekka.repository.UserRepository;
+import com.ssafy.eurekka.vo.DoneProduct;
 import com.ssafy.eurekka.vo.Product;
 import com.ssafy.eurekka.vo.Refrigerator;
+import com.ssafy.eurekka.vo.User;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import javax.swing.text.html.Option;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +23,8 @@ public class RefrigeratorServiceImpl implements RefrigeratorService{
   private RefrigeratorRepository refrigeratorRepository;
   @Autowired
   private ProductRepository productRepository;
+  @Autowired
+  private UserRepository userRepository;
 
   @Override
   public Refrigerator createProduct(ObjectId id, int category, Product product) {
@@ -245,6 +252,31 @@ public class RefrigeratorServiceImpl implements RefrigeratorService{
 
   @Override
   public void updateAbandon(ObjectId userId, ObjectId refrigerId, int category, Product product) {
+    updateDone(refrigerId, category, product);
+
+    //user에 product 정보 추가
+    DoneProduct done = new DoneProduct(new Date(System.currentTimeMillis()), category);
+    User user = userRepository.findById(userId).get();
+    List<DoneProduct> doneList = user.getAbandoned();
+    doneList.add(done);
+    user.setAbandoned(doneList);
+    userRepository.save(user);
+  }
+
+  @Override
+  public void updateEat(ObjectId userId, ObjectId refrigerId, int category, Product product) {
+    updateDone(refrigerId, category, product);
+
+    //user에 product 정보 추가
+    DoneProduct done = new DoneProduct(new Date(System.currentTimeMillis()), category);
+    User user = userRepository.findById(userId).get();
+    List<DoneProduct> doneList = user.getEaten();
+    doneList.add(done);
+    user.setEaten(doneList);
+    userRepository.save(user);
+  }
+
+  private void updateDone(ObjectId refrigerId, int category, Product product) {
     //product db에서 삭제
     productRepository.delete(product);
 
@@ -303,9 +335,6 @@ public class RefrigeratorServiceImpl implements RefrigeratorService{
       }
       refrigeratorRepository.save(refrigerator);
     }
-
-    //user에 product 정보 추가
-    //TODO
   }
 
   private List<Product> getProductListByCategory(Refrigerator refrigerator, int category) {

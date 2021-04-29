@@ -66,4 +66,13 @@ public class RefrigeratorController {
     return new ResponseEntity<>(HttpStatus.OK);
   }
 
+  @ApiOperation(value = "먹음", notes = "사용자, 냉장고 id와 카테고리, 제품 정보를 받아 처리")
+  @PostMapping("/eat")
+  public ResponseEntity<?> updateEat(
+      @RequestParam("userId") ObjectId userId, @RequestParam("refrigerId") ObjectId refrigerId,
+      @RequestParam("category") int category, @RequestBody Product product) {
+    refrigeratorService.updateEat(userId, refrigerId, category, product);
+    return new ResponseEntity<>(HttpStatus.OK);
+  }
+
 }
