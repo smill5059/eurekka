@@ -242,4 +242,121 @@ public class RefrigeratorServiceImpl implements RefrigeratorService{
 
     return null;
   }
+
+  @Override
+  public void updateAbandon(ObjectId userId, ObjectId refrigerId, int category, Product product) {
+    //product db에서 삭제
+    productRepository.delete(product);
+
+    //refrigerator에서 product 삭제
+    Optional<Refrigerator> found = refrigeratorRepository.findById(refrigerId);
+    if (found.isPresent()) {
+      Refrigerator refrigerator = found.get();
+      List<Product> productList = getProductListByCategory(refrigerator, category);
+      productList.remove(product);
+      switch (category) {
+        case 0:
+          refrigerator.setNoodles(productList);
+          break;
+        case 1:
+          refrigerator.setSnack(productList);
+          break;
+        case 2:
+          refrigerator.setBeverage(productList);
+          break;
+        case 3:
+          refrigerator.setPickles(productList);
+          break;
+        case 4:
+          refrigerator.setDiary(productList);
+          break;
+        case 5:
+          refrigerator.setHealth(productList);
+          break;
+        case 6:
+          refrigerator.setPowder(productList);
+          break;
+        case 7:
+          refrigerator.setMeat(productList);
+          break;
+        case 8:
+          refrigerator.setSeasoning(productList);
+          break;
+        case 9:
+          refrigerator.setOcean(productList);
+          break;
+        case 10:
+          refrigerator.setFresh(productList);
+          break;
+        case 11:
+          refrigerator.setAlcohol(productList);
+          break;
+        case 12:
+          refrigerator.setFrozen(productList);
+          break;
+        case 13:
+          refrigerator.setIces(productList);
+          break;
+        case 14:
+          refrigerator.setOthers(productList);
+          break;
+      }
+      refrigeratorRepository.save(refrigerator);
+    }
+
+    //user에 product 정보 추가
+    //TODO
+  }
+
+  private List<Product> getProductListByCategory(Refrigerator refrigerator, int category) {
+    List<Product> productList = null;
+    switch (category) {
+      case 0:
+        productList = refrigerator.getNoodles();
+        break;
+      case 1:
+        productList = refrigerator.getSnack();
+        break;
+      case 2:
+        productList = refrigerator.getBeverage();
+        break;
+      case 3:
+        productList = refrigerator.getPickles();
+        break;
+      case 4:
+        productList = refrigerator.getDiary();
+        break;
+      case 5:
+        productList = refrigerator.getHealth();
+        break;
+      case 6:
+        productList = refrigerator.getPowder();
+        break;
+      case 7:
+        productList = refrigerator.getMeat();
+        break;
+      case 8:
+        productList = refrigerator.getSeasoning();
+        break;
+      case 9:
+        productList = refrigerator.getOcean();
+        break;
+      case 10:
+        productList = refrigerator.getFresh();
+        break;
+      case 11:
+        productList = refrigerator.getAlcohol();
+        break;
+      case 12:
+        productList = refrigerator.getFrozen();
+        break;
+      case 13:
+        productList = refrigerator.getIces();
+        break;
+      case 14:
+        productList = refrigerator.getOthers();
+        break;
+    }
+    return productList;
+  }
 }

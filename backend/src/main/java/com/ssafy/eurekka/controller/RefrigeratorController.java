@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -54,6 +55,15 @@ public class RefrigeratorController {
       return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
     return new ResponseEntity<>(result, HttpStatus.OK);
+  }
+
+  @ApiOperation(value = "버림", notes = "사용자, 냉장고 id와 카테고리, 제품 정보를 받아 처리")
+  @PostMapping("/abandon")
+  public ResponseEntity<?> updateAbandon(
+      @RequestParam("userId") ObjectId userId, @RequestParam("refrigerId") ObjectId refrigerId,
+      @RequestParam("category") int category, @RequestBody Product product) {
+    refrigeratorService.updateAbandon(userId, refrigerId, category, product);
+    return new ResponseEntity<>(HttpStatus.OK);
   }
 
 }
