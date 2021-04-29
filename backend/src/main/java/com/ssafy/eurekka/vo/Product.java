@@ -23,4 +23,5 @@ public class Product {
   private String name;
   @Temporal(TemporalType.TIMESTAMP)
   private Date expirationDate;
+  private String ingredient;
 }
