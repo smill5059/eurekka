@@ -1,6 +1,4 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { Button, View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import LoginScreen from './src/screens/LoginScreen';
@@ -15,12 +13,12 @@ export default function App() {
         <Stack.Screen
           name="Login"
           component={LoginScreen}
-          options={{ title: 'PROJECT LIST' }}
+          options={{ title: 'Login Pape' }}
         />
         <Stack.Screen
           name="Home"
           component={HomeScreen}
-          options={{ title: 'GAGURI' }}
+          options={{ title: 'Home Page' }}
         />
       </Stack.Navigator>
     </NavigationContainer>
