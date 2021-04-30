@@ -14,9 +14,9 @@ public class Barcode {
   @Id
   private ObjectId id;
 
+  private int seq;
   private int code;
   private String name;
   private String imgUrl;
-  private String expiration;
   private String category;
 }

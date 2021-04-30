@@ -18,6 +18,9 @@ public class Refrigerator {
   @Id
   private ObjectId id;
 
+  // List<ObjectId>가 아닌 List<Product>로 한 이유:
+  // 전체 제품 조회 할 때  List[]로 반환해서 ObjectId로 하면
+  // 프론트에서 어떤 제품인지 알 수 없음
   List<Product> noodles;
   List<Product> snack;
   List<Product> beverage;
